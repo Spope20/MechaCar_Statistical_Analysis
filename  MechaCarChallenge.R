@@ -25,3 +25,22 @@ total_summary
 
 lot_summary <- suspension_df %>% group_by(Manufacturing_Lot) %>% summarise(Mean = mean(PSI), Median = median(PSI), Variance = var(PSI), SD = sd(PSI), .groups = 'keep')
 lot_summary
+
+
+total_ttest = t.test(suspension_df$PSI)
+total_ttest
+
+
+#seperating PSI by lot
+lot1 <- suspension_df %>% filter(grepl("Lot1", Manufacturing_Lot))
+lot2 <- suspension_df %>% filter(grepl("Lot2", Manufacturing_Lot))
+lot3 <- suspension_df %>% filter(grepl("Lot3", Manufacturing_Lot))
+
+lot1_test <- t.test(lot1$PSI)
+lot1_test
+
+lot2_test <- t.test(lot2$PSI)
+lot2_test
+
+lot3_test <- t.test(lot3$PSI)
+lot3_test
